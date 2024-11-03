@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script>
+            function my_function(){
+                const body = document.getElementById("body")
+                if (body.style.backgroundColor === "red"){
+                    body.style.backgroundColor = "green";
+
+                }
+                else if (body.style.backgroundColor=== "green") {
+                    body.style.backgroundColor = "yellow";
+                    
+                } 
+                else {
+                    
+                    body.style.backgroundColor = "red";
+
+                }
+                
+            }
+            
+        </script>
+    </head>
+    <body id="body" style="background-color:yellow;">
+        <button type="button" onclick="my_function()">click</button>
+
+    </body>
+</html>
