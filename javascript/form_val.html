@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="form" method="post">
+        <h1 style="text-align: center;">REGISTRATION FORM</h1>
+        <label for="username">Name:</label>
+        <input type="text" id="username" placeholder="Username" required /><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Password" required /><br>
+        
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" placeholder="Email" required /><br>
+        
+        <label for="phone">Phone No:</label>
+        <input type="text" id="phone" placeholder="Enter your number" required /><br>
+        
+        <div class="gender">
+            <p>Choose your gender:</p>
+            <input type="radio" id="male" name="gender" value="male" />
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female" />
+            <label for="female">Female</label><br>
+            <input type="radio" id="others" name="gender" value="others" />
+            <label for="others">Others</label><br>
+        </div>
+        <input type="submit" id="submit" value="Submit" /><br>
+    </form>
+    <!-- Link to the JavaScript file -->
+    <script src="val.js"></script>
+</body>
+</html>
