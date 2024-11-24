@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-repeat:no-repeat;
+            }
+        </style>
+        <script>
+            function my_function(){
+                const body = document.getElementById("body");
+                const parag =document.getElementById('para');
+                body.style.backgroundImage='url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXPjpP8SImldjS3RfX5ULguXBo7MlCbNeABg&s")';
+                parag.innerHTML=("fav food");
+                parag.style.color = "red";
+            }
+            function out(){
+                const body = document.getElementById("body");
+                const parag =document.getElementById('para');
+                body.style.backgroundImage=url("");
+                parag.innerHTML=("favoriete");
+
+            }
+        </script>
+    </head>
+    <body id="body" onmouseover="my_function()" onmouseout="out()">
+        <p id="para" > akhila's</p>
+    </body>
+</html>
