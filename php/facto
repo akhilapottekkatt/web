@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form  id="fibo" method="POST">
+            <label for="numb">enter number</label>
+            <input type="number" placeholder="enter the number" name="numb" >
+            <button type="submit" >calculate fiboo</button>
+        </form>
+        <?php  
+            if ( $_SERVER[ "REQUEST_METHOD" ] ==  "POST" ){
+                $numb = $_POST["numb"];
+
+                function fiboo($numb){
+                    $fact = 1 ;
+                    for( $i=1 ; $i <= $numb ; $i++) {
+                        $fact = $fact * $i;
+    
+                    }
+                    return "$fact" ;
+    
+                }
+            }
+            $sequece=fiboo($numb);
+            echo "$sequece";
+
+            
+            
+        ?>
+        
+
+    </body>
+</html>
