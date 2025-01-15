@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Registration form</h1>
+        <form id="form1" method="POST" border='1' onsubmit="return validation()">
+            <label for="">enter the name</label>
+            <input type="text" name="name" id="name" placeholder="enter your name" ><br><br>
+            <label for="">enter the email</label>
+            <input type="email" name="email" id="email" placeholder="enter your email" ><br><br>
+            <input type="submit">
+            
+
+        </form>
+        <?php
+            $conn=new mysqli("localhost","root","","exam");
+            if($conn->connect_error==True){
+                die("fail to connect"."<br>");
+            }
+            else{
+                echo "connect successfuly"."<br>";
+            }
+
+            //create table
+
+            $sql = "CREATE TABLE IF NOT EXISTS details(
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    email VARCHAR(50) NOT NULL
+            )";
+            if($conn->query("$sql")==True){
+                echo "successfully create"."<br>";
+            }
+            else{
+                echo "failed to create";
+            }
+
+            //enter data 
+
+            if( $_SERVER["REQUEST_METHOD"]=="POST"){
+                $name =$_POST["name"];
+                $email=$_POST["email"];
+
+                $stmt =$conn->prepare("INSERT INTO details(name,email)VALUES(?,?)");
+                $stmt->bind_param("ss",$name,$email);
+                if($stmt->execute()){
+                    echo "correctly excecue"."<br>";
+                }
+                else{
+                    echo "falsee";
+                }
+
+                $stmt->close();
+
+
+            }
+
+            //data retrive
+
+            $sql = "SELECT * FROM details";
+            $result = $conn->query($sql);
+
+            if($result->num_rows>0){
+                echo "<table border='1'>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                            </tr>";
+                while($rows=$result->fetch_assoc()){
+                    echo "<tr>
+                                <td>".$rows["id"]."</td>
+                                <td>".$rows["name"]."</td>
+                                <td>".$rows["email"]."</td>
+                            </tr>";
+                }
+                echo "</table>";
+            }
+            else{
+                echo "not found";
+            }
+
+            $conn->close();
+
+            
+
+
+
+         ?>
+        <script>
+            function validation(){
+                var name = document.getElementById("name").value;
+                var email=document.getElementById("email").value;
+
+                if(name === ""){
+                    alert("enter your name");
+                    document.form1.name.focus();
+                    return false;
+                }
+                if(email=== ""){
+                    alert("enter correctly");
+                    document.form1.email.focus();
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>
